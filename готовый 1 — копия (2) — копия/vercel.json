@@ -3,27 +3,31 @@
     "builds": [
         {
             "src": "mama/theater_system/vercel_app.py",
-            "use": "@vercel/python"
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb"
+            }
         }
     ],
     "routes": [
         {
             "src": "/static/(.*)",
-            "dest": "mama/theater_system/staticfiles/$1"
+            "dest": "/mama/theater_system/staticfiles/$1"
         },
         {
             "src": "/media/(.*)",
-            "dest": "mama/theater_system/media/$1"
+            "dest": "/mama/theater_system/media/$1"
         },
         {
             "src": "/(.*)",
-            "dest": "mama/theater_system/vercel_app.py"
+            "dest": "/mama/theater_system/vercel_app.py"
         }
     ],
     "env": {
         "DJANGO_SETTINGS_MODULE": "theater_system.settings",
         "PYTHONPATH": "mama/theater_system",
-        "DJANGO_DEBUG": "False"
+        "DJANGO_DEBUG": "False",
+        "VERCEL_DEPLOYMENT": "1"
     },
     "buildCommand": "cd mama/theater_system && python manage.py collectstatic --noinput"
 } 

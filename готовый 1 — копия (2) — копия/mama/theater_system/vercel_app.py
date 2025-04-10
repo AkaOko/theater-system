@@ -1,9 +1,15 @@
 import os
 import sys
-import django
+
+# Добавляем текущую директорию в PYTHONPATH
+current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if current_dir not in sys.path:
+    sys.path.append(current_dir)
 
 # Настройка Django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'theater_system.settings')
+
+import django
 django.setup()
 
 # Инициализация базы данных
