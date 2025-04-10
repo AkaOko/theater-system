@@ -1,17 +1,17 @@
 import os
 import sys
 import django
-from django.core.handlers.wsgi import WSGIHandler
-from django.core.wsgi import get_wsgi_application
 
 # Добавляем путь к проекту в sys.path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(os.path.join(project_root, 'mama', 'theater_system'))
 
 # Настройка Django
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'theater_system.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mama.theater_system.theater_system.settings')
 django.setup()
 
 # Получаем WSGI приложение
+from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
 # Функция для обработки запросов
@@ -29,6 +29,9 @@ def handler(request):
         'wsgi.multithread': False,
         'wsgi.multiprocess': False,
         'wsgi.run_once': False,
+        'wsgi.url_scheme': 'https',
+        'SERVER_NAME': request.headers.get('host', '').split(':')[0],
+        'SERVER_PORT': '443',
     }
     
     # Добавляем заголовки
