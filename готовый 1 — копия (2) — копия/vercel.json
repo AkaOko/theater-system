@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "api/index.py",
+            "src": "mama/theater_system/vercel_app.py",
             "use": "@vercel/python"
         }
     ],
@@ -17,11 +17,11 @@
         },
         {
             "src": "/(.*)",
-            "dest": "api/index.py"
+            "dest": "mama/theater_system/vercel_app.py"
         }
     ],
     "env": {
-        "DJANGO_SETTINGS_MODULE": "mama.theater_system.theater_system.settings",
+        "DJANGO_SETTINGS_MODULE": "theater_system.settings",
         "PYTHONPATH": "mama/theater_system",
         "DJANGO_DEBUG": "False"
     },
