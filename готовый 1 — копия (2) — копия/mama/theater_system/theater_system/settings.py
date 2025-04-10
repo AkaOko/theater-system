@@ -26,7 +26,7 @@ DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-t2(6wgzd@v39mvu9sb*zs5=3-m%f3czn%!q*o9hmc^5(z609t!')
 
-ALLOWED_HOSTS = ['gotovyj-1.vercel.app', '.vercel.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['theater-deploy.vercel.app', '.vercel.app', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -162,6 +162,9 @@ if not DEBUG:
 
 # WhiteNoise configuration
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_ALLOW_ALL_ORIGINS = True
 
 # Database configuration
 if 'VERCEL' in os.environ:

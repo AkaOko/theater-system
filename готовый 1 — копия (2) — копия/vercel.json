@@ -22,6 +22,8 @@
     ],
     "env": {
         "DJANGO_SETTINGS_MODULE": "theater_system.settings",
-        "PYTHONPATH": "mama/theater_system"
-    }
+        "PYTHONPATH": "mama/theater_system",
+        "DJANGO_DEBUG": "False"
+    },
+    "buildCommand": "cd mama/theater_system && python manage.py collectstatic --noinput"
 } 
