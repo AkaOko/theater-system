@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "mama/theater_system/vercel_app.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "mama/theater_system/staticfiles/$1"
+        },
+        {
+            "src": "/media/(.*)",
+            "dest": "mama/theater_system/media/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "mama/theater_system/vercel_app.py"
+        }
+    ],
+    "env": {
+        "DJANGO_SETTINGS_MODULE": "theater_system.settings",
+        "PYTHONPATH": "mama/theater_system"
+    }
+} 

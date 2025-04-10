@@ -1,0 +1,33 @@
+{
+    "builds": [
+        {
+            "src": "theater_system/wsgi.py",
+            "use": "@vercel/python"
+        },
+        {
+            "src": "build_files.sh",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "staticfiles"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
+            "src": "/media/(.*)",
+            "dest": "/media/$1"
+        },
+        {
+            "src": "/favicon.ico",
+            "dest": "/static/favicon.ico"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "theater_system/wsgi.py"
+        }
+    ]
+} 
