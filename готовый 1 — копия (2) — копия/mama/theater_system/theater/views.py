@@ -52,7 +52,6 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'theater/register.html', {'form': form})
 
-@login_required
 def home(request):
     return render(request, 'theater/home.html')
 
